@@ -7,7 +7,7 @@
     - **compile** is the process of coverting *human-readable* source code(e.g. Java) into *computer-executable* instructions
 
 ### JRE(Java Runtime Environment)
-- provides a *space* for **writting and running** Java programs
+- provides a *space* for *written Java programs* to **run**
 
 ### JVM(Java Virtual Machine)
 - core of JRE
@@ -20,8 +20,8 @@
 2. install JDK and remember the path
 3. configure environment variables
     - step1: "此电脑" -> "属性" -> "编辑系统环境变量" -> "系统环境变量"
-    - step2: add the **JAVA_HOME\bin** variable in "系统变量" (enter the JDK path)
-    - step3: add **%JAVA_HOME** and **%JAVA_HOME%\jre\bin** in "用户变量/Path"
+    - step2: add the **JAVA_HOME** variable in "系统变量" (enter the JDK path)
+    - step3: add **%JAVA_HOME%\bin** and **%JAVA_HOME%\jre\bin** in "用户变量/Path"
 4. open cmd and type in "java -version" to test whether the configuration is successful
 
 
