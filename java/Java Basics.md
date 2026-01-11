@@ -54,7 +54,7 @@
         - ```cannot be changed``` once created
         - use ```double quotation marks ""```
     - data type conversion
-        ![data type conversion](image\dataTypeConversion.png)
+        ![data type conversion](..\image\dataTypeConversion.png)
         - low-percision type likes a smaller glass
         - high-percision type likes a larger glass which can contain more data
         - high-percision type convert to low-percision type may result ```overflow``` (```explicit casting``` is required)
@@ -284,24 +284,90 @@ class exercise{
 ## Syntax
 ### muti-condition branch judgment
 - if else
-```java
-    if(condition1){
-        // todo
-    } else{
-        //todo
-    }
-```
+    ```java
+        if(condition1){
+            // todo
+        } else{
+            //todo
+        }
+    ```
 - else if
     - the code block of **the first satisfied condition is executed**
     - the **remaining branches are no longer judged**
-```java
-   if(condition1){
-       // todo
-   }
-   else if(condition2){
-       // todo
-   }
-   else if(condition3){
-       // todo
-   }
-``
+    ```java
+    if(condition1){
+        // todo
+    }
+    else if(condition2){
+        // todo
+    }
+    else if(condition3){
+        // todo
+    }
+    ```
+- switch
+    - should use **break** after each expression finished
+    ```java
+    switch(expression){
+        case constantValue1:  // excute when "expression == constantValue1"
+            executeCode1;
+            break;
+        case constantValue2:
+            executeCode2;
+            break;
+        default:
+            defaultExecuteCode;
+            break;
+    }
+    ```
+    ```java
+    import java.util.Scanner;
+
+    public class Season {
+        public static void main(String[] args) {
+            Scanner s = new Scanner(System.in);
+            System.out.println("please type in month:");
+            int month = s.nextInt();
+            switch (month){
+                case 12:
+                case 1:
+                case 2:     // when many cases need to execute the same code, can "case fall-through"(case贯穿) [donnot need to use "break;"]
+                    System.out.println("spring");
+                    break;
+                case 3:
+                case 4:
+                case 5:
+                    System.out.println("summer");
+                    break;
+                case 6:
+                case 7:
+                case 8:
+                    System.out.println("autumn");
+                    break;
+                case 9:
+                case 10:
+                case 11:
+                    System.out.println("winter");
+                    break;
+            }
+            s.close(); // releases resources occupied by Scanner
+        }
+    }
+    ```
+- while
+    - will continuously execute if only the expression is true
+    ```java
+    // print 1 to 4
+    public class while_doWhile {
+    public static void main(String[] args) {
+        int i = 0;
+        while(i < 5){
+            System.out.println(i);
+            i++;
+            }
+        }
+    }
+    ```
+- do-while
+    - execute first then determine whether the conditions are met(if meet then execute)
+
