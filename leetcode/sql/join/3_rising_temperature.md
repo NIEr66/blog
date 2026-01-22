@@ -14,4 +14,6 @@
         - 支持的单位：DAY、HOUR、MINUTE等
         - TIMESTAMPDIFF(DAY, W2.recordDate, W1.recordDate) = 1)
         - 注意！`datediff`函数是`左边时间-右边时间`；`timestampdiff`是`右边时间-左边时间`
+    - 如果ON子句用W1.id = W2.id连接两个表，那么DATEDIFF()函数得到的永远是0
+        - ON子句按条件把两个表连接到一起了，where中只会匹配`连接后的表中`符合条件的行，而非固定左边表某一行去查找右边表所有行
 

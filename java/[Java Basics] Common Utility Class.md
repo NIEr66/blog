@@ -70,7 +70,7 @@
     - `Math.ceil(number)`: Rounds up (ceiling rounding, returns double)
     - `Math.floor(number)`: Rounds down (floor rounding, returns double)
 - Random Number Generation
-    - `Math.random()`: Generates a random double number in [0.0, 1.0)
+    - `Math.random()`: Generates a random double number in [0.0, 1.0`)`
     - **Generate random integer** in range (e.g., 1~100): `(int)(Math.random() * 100) + 1`
 - Square Root/Exponent/Logarithm
     - `Math.sqrt(number)`: Calculates the positive square root (returns double)
@@ -79,3 +79,5 @@
     - `Math.pow(double base, double exponent)`: Calculates the base^exponent (returns double)
 - Common Constants
     - `Math.PI`: Pi (≈3.1415926)
+        - a built-in `static final constant` in Java
+        - an `immutable` **double-type** value

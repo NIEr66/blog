@@ -21,11 +21,8 @@
 - -=
 ### Logical Operations
 - logical not !
-- Long-circuit And &
-    - need to `execute both sides`
 - Short-circuit And &&
     - if the left expression is false then `don't need` to execute the  `right one`
-- Long-circuit Or |
 - Short-circuit Or ||
 ```java
 public class HelloWorld {
@@ -46,12 +43,13 @@ public class HelloWorld {
 - `Long-circuit` is specially for `logical condition judgment` while Short-circuit is for `handling binary values`
 - Long-circuit Or |
 - Long-circuit And &
+    - need to `execute both sides`
 - Exclusive OR / XOR  (^)
     - two binary bits are the `same`, the result is `0`
     - two binary bits are the `different`, the result is `1`
 ```java
 int i = 1;
-boolean b = !(i++ == 3) ^ (i++ ==2) && (++==3);
+boolean b = !(i++ == 3) ^ (i++ == 2) && (i++ == 3);
 System.out.println(b);
 System.out.println(i);
 /**
@@ -77,11 +75,11 @@ public class Exercise{
         Scanner s = new Scanner(System.in);
         System.out.println("今天是周几?");
         int i = s.nextInt();
-        String day = (1 <= i & i <= 5) ? "今天是工作日" : "今天是周末";
+        String day = (1 <= i && i <= 5) ? "今天是工作日" : "今天是周末";
         System.out.println(day);
 
         /**相当于
-        if (1 <= i & i <= 5){
+        if (1 <= i && i <= 5){
             day = "今天是工作日";
         } else{
             day = "今天是周末";

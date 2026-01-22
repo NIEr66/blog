@@ -128,7 +128,8 @@
         - directly **turn to the next iteration of the loop**
         - `without terminating the entire loop`
         ```java
-        public class Even {
+        // print the odd
+        public class Odd {
             public static void main(String[] args) {
                 for(int i = 0; i < 10; i++){
                     if(0 == i % 2){continue;}
@@ -149,7 +150,7 @@
                         for (int i = 0; i < 10; i++) {
                             for (int j = 0; j < 10; j++) {
                                 System.out.println(i + ":" + j);
-                                if (0 == j % 2) {
+                                if (0 != j % 2) {
                                     breakout = true; //终止外部循环的标记设置为true
                                     break;
                                 }
@@ -159,6 +160,8 @@
                         }
                     }
                 }
+                // 0:0
+                // 0:1
                 ```
             - use `label`
                 ```java
