@@ -1,7 +1,6 @@
 # Java Basics - common utility class
 
-## common utility class
-### Scanner
+## Scanner
 - read data entered from the console
 - ```import java.util.Scanner;```
 - read Integer - ```nextInt()```
@@ -59,7 +58,8 @@
         }
     }
     ```
-### `M`ath (must be uppercase)
+
+## `M`ath (must be uppercase)
 - `no need to manually import any class`, because the Math class is in the java.lang package, which is automatically imported by JVM
 - Basic Numeric Operations
     - `Math.abs(number)`: Calculates the absolute value (supports int/double/long)
@@ -81,3 +81,79 @@
     - `Math.PI`: Pi (≈3.1415926)
         - a built-in `static final constant` in Java
         - an `immutable` **double-type** value
+
+## Arrays
+- `Arrays.copyOfRange(original_array, start_index (inclusive), end_index (exclusive))`
+    - like `System.arraycopy()`
+    - copies elements of an array in a specified range to generate a new array
+    ```java
+    int[] a = new int[]{23,45,2,5,63};
+    int[] b = Arrays.copyOfRange(a,1,4); // b is [45,2,5]
+    ```
+- `Arrays.toString(array)`
+    - prints a `one-dimensional array` quickly 
+    - with the `format [element1, element2, ...]`
+    ```java
+    String content = Arrays.toString(b);
+    System.out.pritln(content); // [45,2,5]
+    ```
+- `Arrays.deepToString(array)`
+    - prints multi-dimensional arrays (2D/3D, etc.) 
+    - with the output format `[[element1,element2], [element3,element4], ...]`
+    ```java
+    int[][] c = int[][]{
+            {1,2,3},
+            {4,5,6},
+            {7,8,9}
+        };
+    String content = Arrays.deepToString(c)
+    System.out.println(content); // [[1,2,3],[4,5,6],[7,8,9]]
+    ```
+- `Arrays.sort(array)`
+    - sorts an array in `ascending order`
+    - `modifies the original array` directly
+    ```java
+    // int[] a = new int[]{23,45,2,5,63};
+    Arrays.sort(a);
+    System.out.println(Arrays.toString(a));  // [2,5,23,45,63]
+    ```
+- `Arrays.binarySearch(sorted_array,target_element)`
+    - performs binary search `on a sorted array` and `returns the index` of the target element
+    - using it on unsorted arrays will return wrong results
+    ```java
+    // int[] a = new int[]{23,45,2,5,63};
+    Arrays.sort(a); // a changes to [2,5,23,45,63]
+    location = Arrays.binarySearch(a,45);
+    System.out.println(location); // 3
+    ```
+- `Arrays.equals(arrayA,arrayB)`
+    - compares two `one-dimensional` arrays
+    - same `length` + all corresponding `elements` are equal
+    ```java
+    int a[] = new int[] { 18, 62, 68, 82, 65, 9 };
+    int b[] = new int[] { 18, 62, 68, 82, 65, 8 };
+ 
+    System.out.println(Arrays.equals(a, b)); // false
+    ```
+- `Arrays.deepEquals(arrayA,arrayB)`
+    - compares `multi-dimensional` arrays (2D/3D, etc.) 
+    ```java
+    int a[][] = new int[][] {
+            {1,2,6},
+            {3,4,5}
+        };
+
+    int b[][] = new int[][] {
+            {1,2,6},
+            {3,4,5}
+        };
+    System.out.println(Arrays.equals(a,b)); // true
+    ```
+- `Arrays.fill(array,value)`
+    - fills an array with `a specified value`
+    - `modifies the original array` directly
+    ```java
+    int[] a = new int[10];
+    Arrays.fill(a,5);
+    System.out.println(Arrays.toString(a)); // [5,5,5,5,5,5,5,5,5,5]
+    ```
