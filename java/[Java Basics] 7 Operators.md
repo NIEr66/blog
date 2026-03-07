@@ -42,11 +42,66 @@ public class HelloWorld {
 ### Bitwise Operators
 - `Long-circuit` is specially for `logical condition judgment` while Short-circuit is for `handling binary values`
 - Long-circuit Or |
+    - First `convert to binary`, then `calculate bit by bit`
+    - need to `execute both sides`
+    - have one bit is 1 then 1
 - Long-circuit And &
     - need to `execute both sides`
+    - First `convert to binary`, then `calculate bit by bit`
+    - only if both bits are 1 then 1
 - Exclusive OR / XOR  (^)
     - two binary bits are the `same`, the result is `0`
     - two binary bits are the `different`, the result is `1`
+- Bitwise NOT ~
+    - flip binary bits (0↔1), `complete inversion`
+    ```java
+    public class HelloWorld {
+	public static void main(String[] args) {
+		byte i  =5;
+		
+		System.out.println(Integer.toBinaryString(i)); //5的二进制是00000101,所以取非即为11111010,即为-6
+		
+		System.out.println(~i);
+		}
+	    }
+    ```
+- Right Shift >>
+    - shift each of its bits to the right
+    - signed right shift >>
+        - will preserve the sign
+        - for `positive` numbers, shifts all bits to the right and `pads 0 to the leading position`
+        - for `negative` numbers, shifts all bits to the right and `pads 1 to the leading position`
+    - unsigned right shift >>>
+        - results in the `first bit becoming 0` after shifting
+        - causes a negative number to `become a positive number` after unsigned right shift
+- Left Shift <<
+    - shift each of its bits to the left, and **fill the rightmost bit with 0**
+    - General rule for `shifting left by n bits`: `Result = Original number × Baseⁿ`
+    ```java
+    // how to calculate 2*16 without using multiple sign
+    public class ScannerPractise {
+        public static void main(String[] args) {
+            int a = 2;
+            // the binary string of a
+            System.out.println(Integer.toBinaryString(a));
+            System.out.println(a<<4);
+        }
+    }
+    ```
+```java
+public class HelloWorld {
+	public static void main(String[] args) {
+		byte i  =6;
+		
+		//6的二进制是110
+		System.out.println(Integer.toBinaryString(i)); 
+		//6向左移1位后，变成1100，对应的10进制是12
+		System.out.println(i<<1);
+		//6向右移1位后，变成11，对应的10进制是3
+		System.out.println(i>>1);
+	}	
+}
+```
 ```java
 int i = 1;
 boolean b = !(i++ == 3) ^ (i++ == 2) && (i++ == 3);

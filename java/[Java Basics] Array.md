@@ -76,7 +76,6 @@
 - selection sort
     - `compare the first element` with all the other elements. Whenever an element is `smaller than the first one`, `swap it to the first position`
     - then second position and so on
-    
         ![selectionSort](..\image\javaArray1.png)
     ```java
     public class HelloWorld {
@@ -145,7 +144,7 @@
     }
     ```
 - bubble sort
-    - start `from the first element` and compare each pair of `adjacent elements`. If the `former element` is found to be `larger than the latter` one, `swap` the larger element to the latter position
+    - start `from the first element` and compare each pair of `adjacent elements` If the `former element` is found to be `larger than the latter` one, `swap` the larger element to the latter position
     - repeat
     
         ![selectionSort](..\image\javaArray2.png)
@@ -307,7 +306,7 @@ public class HelloWorld {
             - Stored in the method area, initialized when the class is loaded, and `globally unique`
         - Native
             - The method body is not written in Java, but implemented in low-level languages such as C/C++
-    - used to copy arrays efficiently (`faster than manual for-loop`copying)
+    - used to copy arrays efficiently (`faster than manual for-loop` copying)
     - supporting partial or full element copying of arrays
 ```java
 public class HelloWorld {
@@ -376,32 +375,36 @@ public class HelloWorld {
 > 2. Then sort the one-dimensional array with the sort method;
 > 3. Finally, copy the sorted one-dimensional array back to the original 2D array.
 ```java
-public class TwoDimensionalArray {
+class SortTheArray {
     public static void main(String[] args) {
-        // create an 2D array a
-        int[][] a = new int[5][8];
-        for (int i = 0; i < a.length; i++){
-            for (int j = 0; j < a[i].length; j++){
-                a[i][j] = (int)(Math.random() * 100);
-                System.out.printf("%3d", a[i][j]);
+        int[][] a = new int[5][8]; // 2 dimensions array
+        int[] b = new int[40]; // 1 dimension array
+        for (int i=0;i<a.length;i++){
+            for (int j=0;j<a[i].length;j++){
+                a[i][j] = (int)(Math.random()*100);
             }
-            System.out.println();
         }
-        // transfer 2D array a to 1D array b
-        int[] b = new int[5*8];
-        for (int i = 0; i < a.length; i++){
-            System.arraycopy(a[i],0,b,i*8,a[i].length);
+        System.out.println(Arrays.deepToString(a));
+        System.out.println();
+
+        // copy array a to array b
+        int index = 0;
+        for (int[] each:a){
+            System.arraycopy(each, 0, b, index, 8);
+            index += 8;
         }
-        // print the 1D array b
         System.out.println(Arrays.toString(b));
-        // sort the 1D array b
+        System.out.println();
+        // sort array b
         Arrays.sort(b);
-        // print the 1D array b after sort
-        System.out.println(Arrays.toString(b));
-        // transfer sorted b to original 2D array a
-        for (int i = 0; i < 5; i++){
-            System.arraycopy(b,i*8,a[i],0,8);
+
+        // important!!! reset the indicator
+        index = 0;
+        for (int i=0;i<a.length;i++){
+            a[i] = Arrays.copyOfRange(b,index,index+8);
+            index += 8;
         }
+        // sorted array a
         System.out.println(Arrays.deepToString(a));
     }
 }

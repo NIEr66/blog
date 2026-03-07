@@ -1,5 +1,8 @@
 # Java Basics - 8 variable types
 
+## Definition
+- the identifier used to name a data
+- the type decides what value can be include
 ## 8 basic variable types
 - **4 Integer type**
     - byte(can only store *8* bits)
@@ -9,14 +12,15 @@
         - **bit** is the ```smallest storage unit``` of computer
         - 1 bit can only store 0 or 1
         - 1 Byte = 8 bits(8 consecutive binary bits)
-- **1 Character type**
+        - needs to add the suffix **l/L**
+- **1 Char type**
     - use ```single quotation marks ''```
     - can only store ```1 character```
 - **2 Floating-point type**
     - float(32 bits)
         - needs to add the suffix **f/F**
     - double(64 bits)
-        - default type
+        - `default` type
         - scientific notation
             - e.g. 3.14 * 10^2 = 3.14e2
             - e.g. 5 * 10^(-3) = 5e-3
@@ -33,7 +37,7 @@
         - low-percision type likes a smaller glass
         - high-percision type likes a larger glass which can contain more data
         - high-percision type convert to low-percision type may result ```overflow``` (```explicit casting``` is required)
-        - ```java
+        ```java
             public class HelloWorld {
 
             public static void main(String[] args) {
@@ -48,48 +52,18 @@
                 s = c;
                 }
             }
-            ```
-    - **Scope**
-        - refers to the code range where a variable/field can be accessed
-        - Fields(member variables)
-            - defined inside a class but outside methods
-            - with the scope of ```entire class```
-        - Parameters(method parameters)
-            - defined in the method's parameter list
-            - with the scope of the ```current class interior```
-            - destroyed after the method is executed
-        - Local variables
-            - defined inside methods or code blocks
-            - with the scope of the ```current code block interior```
-        - ```Priority (when names are the same): Local variables > Parameters > Fields```
-        - ```java
-            public class HelloWorld {
-                
-                int i = 1; // this i is a Filed
-
-                public void method1(int i){ //this i is a method parameter
-                    System.out.println(i);
-                }
-                
-                public static void main(String[] args) {
-                    new HelloWorld().method1(5);
-                    //the result is 5
-                }
-            }
-            ```
+        ```
     - final
         - when a variable modified by *final*, it can only ```be assigned a value once (cannot be changed``` after assignment)
         - declaration(there's a variable named XX with type of YY) & assignment(set a specific value) 
-        - ```java
+        ```java
             public class HelloWorld {
-
                 // 定义method1方法，参数j被final修饰
                 public void method1(final int j) {
                     // 注意：下面这行代码如果解开注释，编译会报错（final基本类型参数不可重新赋值）
                     // j = 5; 
                     System.out.println("method1方法接收到的参数值是：" + j);
                 }
-
                 // 程序入口main方法（说明在哪里开始运行）
                 public static void main(String[] args) {
                     // 1. 创建HelloWorld类的对象，同时调用method1方法，传入实参8
@@ -102,4 +76,39 @@
                     // hello.method1(8); // 调用方法并传参
                 }
             }
-          ```
+        ```
+## Scope
+- refers to the code range where a variable/field can be accessed
+- Fields(member variables)
+    - defined inside a class but outside methods
+    - with the scope of ```entire class```
+- Parameters(method parameters)
+    - defined in the method's parameter list
+    - with the scope of the ```current class interior```
+    - destroyed after the method is executed
+- Local variables
+    - defined inside methods or code blocks
+    - with the scope of the ```current code block interior```
+- ```Priority (when names are the same): Local variables > Parameters > Fields```
+```java
+    public class HelloWorld {
+        
+        int i = 1; // this i is a Field
+        public void method1(int i){ //this i is a method parameter
+            System.out.println(i);
+        }
+        
+        public static void main(String[] args) {
+            new HelloWorld().method1(5);
+            //the result is 5
+        }
+    }
+```
+## Rules of variable naming
+- variable names can only contain `letter`,`$`,`number` or `_`
+- the `first character` of a variable `cannot be a number`
+- name with `full words` instead of using the abbreviations
+- cannot uses keywords but can contains keywords
+    - keywords have `already been given special meanings` by Java
+    - ![keywords](..\image\javaKeywords1.png)
+    - ![keywords](..\image\javaKeywords2.png)
