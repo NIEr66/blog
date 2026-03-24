@@ -157,3 +157,96 @@
     Arrays.fill(a,5);
     System.out.println(Arrays.toString(a)); // [5,5,5,5,5,5,5,5,5,5]
     ```
+
+## Date
+- `java.util.Date;`
+    - Time Origin
+        - The time origin of the Date class in Java is January 1, 1970 00:00:00 GMT (Greenwich Mean Time), also known as "Unix Epoch Time"
+        - The time of all Date objects is based on this origin, `expressed in milliseconds (ms)`: the origin is 0 ms, positive after the origin, negative before
+    - Create Date Object
+        - `new Date()`: Create a Date object representing the `current system time`
+        - `new Date(long millis)`: Create a Date object for a specified time based on `"milliseconds since the time origin"`
+        - the no-arg constructor of the Date class essentially calls `System.currentTimeMillis()` to get the current milliseconds
+    ```java
+    // 当前时间
+            Date d1 = new Date();
+            System.out.println("当前时间:");
+            System.out.println(d1);
+            System.out.println();
+            // 从1970年1月1日 早上8点0分0秒 开始经历的毫秒数
+            Date d2 = new Date(5000);
+            System.out.println("从1970年1月1日 早上8点0分0秒 开始经历了5秒的时间");
+            System.out.println(d2);
+    ```
+    - `getTime()`
+        - Returns the number of milliseconds since the time origin (type long) 
+        - `System.currentTimeMillis()`: Get current milliseconds directly (more efficient) without creating a Date instance
+        ```java
+        Date now= new Date();
+        //打印当前时间
+        System.out.println("当前时间:"+nowtoString());
+        //getTime() 得到一个long型的整数
+        //这个整数代表 1970.1.108:00:00:000，每经历一毫秒，增加1
+        System.out.println("当前时间getTime()返回的值是："+now.getTime()); // 1773193351186
+        System.currentTimeMillis(); // same results
+        
+        Date zero = new Date(0);
+        System.out.println("用0作为构造方法，得到的日期是:"+zero); // Thu Jan 01 08:00:00 CST 1970
+        ```
+- `java.text.SimpleDateFormat;`
+    - Date type convert to String type
+        - `SimpleDateFormat()`
+        - yyyy-MM-dd HH:mm:ss SSS (`H-24`;`h-12`)
+        ```java
+        import java.text.SimpleDateFormat;
+        import java.util.Date;
+        
+        public class TestDate {
+        
+            public static void main(String[] args) {
+                
+                //y 代表年
+                //M 代表月
+                //d 代表日
+                //H 代表24进制的小时
+                //h 代表12进制的小时
+                //m 代表分钟
+                //s 代表秒
+                //S 代表毫秒
+                SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd HH:mm:ss SSS" );
+                Date d= new Date();
+                String str = sdf.format(d);
+                System.out.println("当前时间通过 yyyy-MM-dd HH:mm:ss SSS 格式化后的输出: "+str);
+                
+                SimpleDateFormat sdf1 =new SimpleDateFormat("yyyy-MM-dd" );
+                Date d1= new Date();
+                String str1 = sdf1.format(d1);
+                System.out.println("当前时间通过 yyyy-MM-dd 格式化后的输出: "+str1);
+            }
+        }
+        ```
+    - String type convert to Date type
+        ```java
+        import java.text.ParseException;
+        import java.text.SimpleDateFormat;
+        import java.util.Date;
+        
+        public class TestDate {
+        
+            public static void main(String[] args) {
+                SimpleDateFormat sdf =new SimpleDateFormat("yyyy/MM/dd HH:mm:ss" );
+        
+                String str = "2026/1/5 12:12:12";
+                
+                try {
+                    Date d = sdf.parse(str);
+                    System.out.printf("字符串 %s 通过格式  yyyy/MM/dd HH:mm:ss %n转换为日期对象: %s",str,d.toString());
+                } catch (ParseException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                
+            }
+        }
+        ```
+  

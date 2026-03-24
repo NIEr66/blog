@@ -60,3 +60,12 @@ public class Item {
 }
 
 ```
+## Important
+- Class `attributes` (e.g., name, age) and `methods` (e.g., functions like eating, running) `can never be written inside the main method`, here's why:
+    - `Wrong "level"`
+        - Think of a **"class" as a "house"**, and the **main method as the "front door (entrance)"** of the house. **Class attributes/operations** are like the **"furniture (tables, chairs)" and "functional areas (kitchen, bedroom)"** in the house
+        - You can only put furniture/functional areas "inside the house" (at the class level) — not "inside the front door" (inside the main method)
+    - `Java rules don’t allow it`
+        - Java’s rule is clear: `A method (like main) can only contain` `"temporary things"` (e.g., local variables) and `"actions to execute"` (e.g., using furniture, opening/closing doors) 
+    - `Different purposes`
+        - `Class attributes/operations` are "shared by the whole house" (`usable by all methods`), while `things inside main` only work "when you go through the front door" — they `become useless once you leave the door`. If you put attributes/operations inside main, other methods can’t use them at all, and the "class" loses its meaning
