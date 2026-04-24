@@ -1,7 +1,7 @@
 # Java Basics - Class and Object
 
 ## Reference
-- if a variable' type is `class type` rather than basic type, then the `variable is also called` a reference
+- if a variable's type is `class type` rather than basic type, then the `variable is also called` a reference
 
     ![reference](../image/reference.png)
 - many references but only one object
@@ -284,7 +284,7 @@ public class Hero {
     }
 }
 ```
-# class method
+## class method
 - class method
     - also called `static` method
     - two ways of access class method
@@ -327,11 +327,13 @@ public class Hero {
 }
 ```
 - Use `class attributes` for data `shared by all objects`, and `object attributes` for data `unique to each object`
+- If a method `accesses instance variables`, it must be defined as an `instance method`
+- If a method `does not use any instance variables`, it can be designed as a `static class method`
 ## Singleton Pattern
 - ensures a class `has only one instance object during program runtime`, and provides a `globally unique access entry` to avoid wasting resources on frequent object creation/destruction
 - 3 key points
     - Privatize the constructor
-    - A static attribute points to an instance
+    - A private static attribute points to an instance
     - A public static getInstance() method that returns the static attribute
 - `Eager` Singleton
     - Creates the only instance `when the class is loaded`
@@ -346,6 +348,8 @@ public class Hero {
         private static GiantDragon instance = new GiantDragon();
         
         //public static 方法，提供给调用者获取类属性定义的对象
+        //静态变量 → 只能在静态方法里直接用
+        //非静态变量 → 只能在普通对象方法里用
         public static GiantDragon getInstance(){
             return instance;
         }
@@ -393,6 +397,8 @@ public class Hero {
         }
     }
     ```
+- Programs using the `lazy style start faster`, because no object is instantiated at launch. However, the `first method call will be slower`, as object initialization happens at that moment
+- Use the `lazy style` if the program has `enough time for startup and initialization`
 ## Enum Type
 - a special `reference type` used to define a **fixed, finite set of constants**
 - It ensures that `the value can only be one of the predefined constants`, avoiding illegal values
